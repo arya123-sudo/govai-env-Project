@@ -9,13 +9,16 @@ class GovEnv:
         self.task = task
         self.time_step = 0
         self.done = False
+
         self.budget = {"easy": 100000, "medium": 70000, "hard": 50000}[task]
         self.citizens = self.generate_citizens(task)
         self.history = []
+
         return self.state()
 
     def generate_citizens(self, task):
         n = {"easy": 5, "medium": 10, "hard": 20}[task]
+
         citizens = []
         for i in range(n):
             citizens.append({
@@ -45,6 +48,7 @@ class GovEnv:
             reward -= 5
         else:
             self.budget -= cost
+
             if citizen["income"] < 20000:
                 reward += 3
             else:
@@ -57,6 +61,7 @@ class GovEnv:
                 reward -= 4
 
         self.history.append((citizen, action, reward))
+
         self.time_step += 1
         if self.time_step >= len(self.citizens):
             self.done = True
