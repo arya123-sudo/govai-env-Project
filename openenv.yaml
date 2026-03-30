@@ -1,0 +1,15 @@
+name: govai-welfare-env
+version: 1.0
+
+observation_space:
+  citizens: list
+  remaining_budget: float
+  time_step: int
+
+action_space:
+  citizen_id: int
+  scheme: string
+
+reward:
+  type: continuous
+  range: [-5,5]
