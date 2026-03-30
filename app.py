@@ -9,6 +9,7 @@ def root():
     return {"message": "GovAI running"}
 
 @app.get("/reset")
+@app.post("/reset")
 def reset():
     return env.reset()
 
