@@ -6,7 +6,7 @@ env = GovEnv()
 
 @app.get("/")
 def root():
-    return {"message":"GovAI running"}
+    return {"message": "GovAI running"}
 
 @app.get("/reset")
 def reset():
@@ -14,4 +14,4 @@ def reset():
 
 @app.get("/health")
 def health():
-    return {"status":"ok"}
+    return {"status": "ok"}
