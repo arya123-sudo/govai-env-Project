@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from env.environment import GovEnv
+from environment import GovEnv
 
 app = FastAPI()
 env = GovEnv()
