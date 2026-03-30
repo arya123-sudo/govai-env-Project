@@ -11,6 +11,8 @@ class GovEnv:
         self.done = False
 
         self.budget = {"easy": 100000, "medium": 70000, "hard": 50000}[task]
+        if task == "hard":
+            self.budget -= 10000  # make it harder
         self.citizens = self.generate_citizens(task)
         self.history = []
 
@@ -59,6 +61,15 @@ class GovEnv:
 
             if citizen["fraud_risk"] > 0.7:
                 reward -= 4
+
+            if citizen["income"] < 15000:
+                reward += 5
+
+            if citizen["fraud_risk"] > 0.7 and action["scheme"] != "reject":
+                reward -= 6
+
+            if action["scheme"] == "reject" and citizen["fraud_risk"] > 0.7:
+                reward += 3
 
         self.history.append((citizen, action, reward))
 
