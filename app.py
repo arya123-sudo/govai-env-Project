@@ -8,6 +8,7 @@ env = GovEnv()
 def root():
     return {"message": "GovAI running"}
 
+# ✅ SUPPORT BOTH (VERY IMPORTANT)
 @app.get("/reset")
 @app.post("/reset")
 def reset():
