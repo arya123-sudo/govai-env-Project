@@ -1,0 +1,7 @@
+[project]
+name = "govai-env"
+version = "0.1.0"
+description = "Government welfare optimization environment"
+
+[tool.openenv]
+entrypoint = "app:app"
