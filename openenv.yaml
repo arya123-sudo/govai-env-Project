@@ -1,20 +1,10 @@
+id: govai-env
 name: govai-env
 description: Government welfare optimization environment
-entry_point: app:app
 
-actions:
-  type: object
-
-observations:
-  type: object
-
-rewards:
-  type: float
+entrypoint: app:app
 
 tasks:
   - id: easy
-    description: High budget low fraud
   - id: medium
-    description: Moderate difficulty
   - id: hard
-    description: Low budget high fraud
