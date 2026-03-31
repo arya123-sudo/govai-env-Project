@@ -1,20 +1,20 @@
-id: govai-env
-name: Government Welfare Optimization Environment
-description: AI environment for allocating government welfare schemes under constraints
+name: govai-env
+description: Government welfare optimization environment
 entry_point: app:app
 
-observation_space:
+actions:
   type: object
 
-action_space:
+observations:
   type: object
 
-reward_range: [-10, 10]
+rewards:
+  type: float
 
 tasks:
   - id: easy
-    description: High budget, low fraud
+    description: High budget low fraud
   - id: medium
-    description: Balanced constraints
+    description: Moderate difficulty
   - id: hard
-    description: Low budget, high fraud risk
+    description: Low budget high fraud
