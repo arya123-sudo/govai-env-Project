@@ -1,25 +1,11 @@
-import os,json
-from openai import OpenAI
-from env.environment import GovEnv
-from env.grader import grade
+from environment import GovEnv
 
-client = OpenAI(
-    base_url=os.getenv("API_BASE_URL"),
-    api_key=os.getenv("HF_TOKEN")
-)
+def main():
+    env = GovEnv()
+    state = env.reset()
 
-MODEL_NAME = os.getenv("MODEL_NAME")
-env = GovEnv()
+    print("Environment reset successful")
+    print(state)
 
-def run_task(task):
-    obs = env.reset(task)
-    for _ in range(20):
-        action = {"citizen_id":0,"scheme":"reject"}
-        obs, reward, done, _ = env.step(action)
-        if done:
-            break
-    return grade(env.history)
-
-if __name__=="__main__":
-    for t in ["easy","medium","hard"]:
-        print(t, run_task(t))
+if __name__ == "__main__":
+    main()
