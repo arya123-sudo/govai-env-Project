@@ -1,7 +1,5 @@
-id: govai-env
 name: govai-env
-description: Government welfare optimization environment
-
+description: Welfare allocation with fraud detection
 entrypoint: app:app
 
 tasks:
