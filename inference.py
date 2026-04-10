@@ -41,7 +41,7 @@ def main():
         for task in tasks:
             print(f"[START] task={task}", flush=True)
 
-            state = env.reset()
+            state = env.reset(task)
 
             action = decide_with_llm(client, state)
 
