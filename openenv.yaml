@@ -1,5 +1,5 @@
 name: govai-env
-description: Welfare allocation with fraud detection
+description: Multi-step welfare allocation with fraud auditing
 entrypoint: app:app
 
 tasks:
