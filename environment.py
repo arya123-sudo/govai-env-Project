@@ -59,7 +59,7 @@ class GovEnv:
             reward -= 2
 
         # Normalize reward
-      reward = max(0.01, min(0.99, reward / 5))
+        reward = max(0.01, min(0.99, reward / 5))
 
         self.time_step += 1
         done = self.time_step >= 3
