@@ -1,8 +1,45 @@
 name: govai-env
-description: Multi-step welfare allocation with fraud auditing
+description: >
+  Multi-step government policy simulation environment.
+  An AI agent must allocate welfare to low-income citizens,
+  audit high-risk fraud cases, and reallocate funds based on audit results.
+  Designed to evaluate AI decision-making in resource-constrained, adversarial settings.
+
+version: "2.0.0"
 entrypoint: app:app
+
+endpoints:
+  reset:
+    method: POST
+    path: /reset
+    body: '{"task": "easy"}'
+  step:
+    method: POST
+    path: /step
+    body: '{"allocate": [], "investigate": [], "reallocate": []}'
+  state:
+    method: GET
+    path: /state
+  health:
+    method: GET
+    path: /health
 
 tasks:
   - id: easy
+    description: >
+      6 citizens, budget=100000, clear income/fraud signals, no noise.
+      Income threshold: 20000. Fraud threshold: 0.6.
   - id: medium
+    description: >
+      8 citizens, budget=60000, fraud_risk scores have noise (+/-0.2).
+      Income threshold: 25000. Fraud threshold: 0.65.
   - id: hard
+    description: >
+      10 citizens, budget=35000 (very tight), high noise on fraud signals.
+      Income threshold: 28000. Fraud threshold: 0.7.
+
+scoring:
+  per_step: "reward = correct_decisions - 0.5 * wrong_decisions"
+  budget_penalty: "if budget < 0: penalty proportional to overage"
+  normalization: "reward / citizen_count, clamped to [0.0, 1.0]"
+  final_score: "mean of 3 step rewards per task"
