@@ -1,0 +1,22 @@
+\---
+
+title: govai-env
+
+emoji: "🤖"
+
+colorFrom: blue
+
+colorTo: green
+
+sdk: docker
+
+sdk\_version: "0.0.1"
+
+python\_version: "3.10"
+
+app\_file: app.py
+
+pinned: false
+
+\---
+

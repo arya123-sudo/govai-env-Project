@@ -1,0 +1,12 @@
+[project]
+name = "govai-env"
+version = "0.1.0"
+description = "Government welfare optimization environment"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "openenv-core>=0.2.0"
+]
+
+[project.scripts]
+server = "server.app:main"  
